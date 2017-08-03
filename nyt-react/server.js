@@ -13,6 +13,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+// Set mongoose to leverage built in JavaScript ES6 Promises
+mongoose.Promise = Promise;
 
 // Require Article schema
 var Article = require("./models/Article");
@@ -29,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.static("build"));
+app.use(express.static("public"));
 
 // -------------------------------------------------
 
@@ -47,45 +49,57 @@ db.once("open", function() {
 
 // -------------------------------------------------
 
-// // Main "/" Route. This will redirect the user to our rendered React application
-// app.get("/", function(req, res) {
-//   res.sendFile(__dirname + "/public/index.html");
-// });
+// Main "/" Route. This will redirect the user to our rendered React application
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 
+// /api/saved (get) - your components will use this to query MongoDB for all saved articles
+app.get("api/saved", function(req,res){
 
+	Article.find({}).exec(function(err, doc){
 
-// // /api/saved (get) - your components will use this to query MongoDB for all saved articles
-// app.get("api/saved", function(req,res){
+		if (error) {
+			console.log(err);
+		}
+		else {
+			res.send(doc);
+		}
+	});
+});
 
-// 	Article.find({}).exec(function(err, doc){
-
-// 		if (error) {
-// 			console.log(err);
-// 		}
-// 		else {
-// 			res.send(doc);
-// 		}
-// 	});
-// });
-
-
-// //USE wk9/unit18/act13 for REFERENCE  MATCH WITH 
 
 // // /api/saved (post) - your components will use this to save an article to the database
 
-// app.post("api/saved", function(req,res){
+app.post("/save", function(req, res){
+	console.log(req.body[0])
+	// res.send("hello!")
+	var saveArticle = new Article(req.body[0]);
 
-// 	//MUST DEFINE ARTICLE DATA IN COMPONENT/AJAX POST/ DATA OBJECT 
-	
- 
+	saveArticle.save(function(err, data){
+		// Send any errors to the browser
+	    if (err) {
+	      res.send(err);
+	    }
+	    // Otherwise, send the new doc to the browser
+	    else {
+	      res.send(data);
+	    }
+	})
+});
 
-
-// 	var article = req.body;
-// 	var articleTitle = req.body.title;
-// 	var article;
-// });
-
+app.get("/savedArticles", function(req, res){
+	console.log("inside of /savedArticles server")
+	Article.find({}).exec(function(err, data){
+		if (err){
+			console.log(err) 
+		}
+		else{
+			res.json(data)
+		}
+	})
+})
 // Starting our express server
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);

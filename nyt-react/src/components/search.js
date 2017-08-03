@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 //do I put this in the main or search??
 import helpers from '../utils/helpers';
+import { Route, Link } from 'react-router-dom';
+import saved from './saved.js'
 
 class Search extends React.Component{
 	constructor(){
@@ -22,11 +24,7 @@ class Search extends React.Component{
 			// alert("HandleChange")
 			this.setState({
 				[event.target.id] : event.target.value
-
-
 			});
-
-			console.log(this.state.firstName);
 		}
 
   	// when the user clicks the submit button
@@ -72,6 +70,9 @@ class Search extends React.Component{
 		    			<input type= "number" className="form-control" id="endDate" value={this.state.endDate} onChange={this.handleChange}/>
 		    		</div>
 		    		<button className="btn btn-primary" type="submit" value="Submit" onClick={this.handleSubmit}>Submit</button>
+
+		    	{/*	<button type="button" className="btn btn-default"><Link to="/savedArticles">Saved Articles</Link></button>
+							<Route exact path="/savedArticles" component={saved} />*/}
 		    	</form>
 
 			  </div>
