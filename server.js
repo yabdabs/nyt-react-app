@@ -36,7 +36,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 //for heroku react in place of static public route above
 // app.use(express.static("build"));
 
-==== if its production environment!
+// ==== if its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path')
 	console.log('YOU ARE IN THE PRODUCTION ENV')
