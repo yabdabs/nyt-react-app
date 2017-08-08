@@ -34,22 +34,22 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // app.use(express.static("public"));
 
 //for heroku react in place of static public route above
-app.use(express.static("build"));
+// app.use(express.static("build"));
 
-// ==== if its production environment!
-// if (process.env.NODE_ENV === 'production') {
-// 	const path = require('path')
-// 	console.log('YOU ARE IN THE PRODUCTION ENV')
-// 	app.use('/static', express.static(path.join(__dirname, '../build/static')))
-// 	app.get('/', (req, res) => {
-// 		res.sendFile(path.join(__dirname, '../build/'))
-// 	})
-// }
+==== if its production environment!
+if (process.env.NODE_ENV === 'production') {
+	const path = require('path')
+	console.log('YOU ARE IN THE PRODUCTION ENV')
+	app.use('/static', express.static(path.join(__dirname, '../build/static')))
+	app.get('/', (req, res) => {
+		res.sendFile(path.join(__dirname, '../build/'))
+	})
+}
 
-
-app.get("/", function(req, res){ 
-	res.sendFile(__dirname + "/build/static/index.html");
-});
+	
+// app.get("/", function(req, res){ 
+// 	res.sendFile(__dirname + "/build/static/index.html");
+// });
 // -------------------------------------------------
 
 // MongoDB configuration (Change this URL to your own DB)
