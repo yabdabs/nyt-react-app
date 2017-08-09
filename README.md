@@ -21,3 +21,7 @@ This is a React-based rendition of the New York Times Article Search application
 * Axios npm Package
 * Node 
 * Express
+
+![GIPH](https://zippy.gfycat.com/UntidyRingedFlickertailsquirrel.gif)
+
+
