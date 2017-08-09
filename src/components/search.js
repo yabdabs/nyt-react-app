@@ -57,17 +57,17 @@ class Search extends React.Component{
 			  	<form>
 		    		<div className="form-group">
 		    			<label for= "searchQuery"> Search Query</label>
-		    			<input type= "text" className="form-control" id="searchQuery" value={this.state.searchQuery} onChange={this.handleChange}/>
+		    			<input type= "text" placeholder="ex: NBA" className="form-control" id="searchQuery" value={this.state.searchQuery} onChange={this.handleChange}/>
 		    		</div>
 
 		    		<div className="form-group">
 		    			<label for= "startDate"> Start Date: </label>
-		    			<input type= "number" className="form-control" id="startDate" value={this.state.startDate} onChange={this.handleChange}/>
+		    			<input type= "number" placeholder = "20160101 (YearMonthDate no spaces, slashes or dashes)" className="form-control" id="startDate" value={this.state.startDate} onChange={this.handleChange}/>
 		    		</div>
 
 		    		<div className="form-group">
 		    			<label for= "endDate"> End Date: </label>
-		    			<input type= "number" className="form-control" id="endDate" value={this.state.endDate} onChange={this.handleChange}/>
+		    			<input type= "number" placeholder = "20170101" className="form-control" id="endDate" value={this.state.endDate} onChange={this.handleChange}/>
 		    		</div>
 		    		<button className="btn btn-primary" type="submit" value="Submit" onClick={this.handleSubmit}>Submit</button>
 

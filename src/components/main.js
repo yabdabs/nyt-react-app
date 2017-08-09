@@ -31,7 +31,7 @@ class Main extends React.Component{
 				var article = response.data.response.docs;
 				var articlesArray = [];
 
-				for(var i=0; i<article.length-1; i++){
+				for(var i=0; i<6; i++){
 					if (article[i].headline.main && article[i].pub_date && article[i].web_url){
 						articlesArray.push(article[i]);	
 					}
