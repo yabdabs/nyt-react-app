@@ -5,7 +5,9 @@ Most recent version of Create-react-app Guide [here](https://github.com/facebook
 ----------------------------------
 # New York Times React App
 
-This is a React-based rendition of the New York Times Article Search application. There are 4 components:
+This is a React-based rendition of the New York Times Article Search application. A user can search for an article based on a search term, start date and end date. Articles from the New York Times will appear, and users will be able to save those articles.
+
+There are 4 components:
 * Main Component that holds the entire app
 * Search Component 
 * Results Component displaying the articles
