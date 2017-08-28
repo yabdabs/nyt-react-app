@@ -13,6 +13,7 @@ There are 4 components:
 * Results Component displaying the articles
 * The Saved Component the displays saved Articles in the Mongo Database
 
+[component layout](./public/images/component-layout.png)
 ----------------------------------
 ## Built With
 
